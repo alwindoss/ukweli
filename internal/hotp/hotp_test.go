@@ -6,28 +6,15 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestHMAC(t *testing.T) {
-	secret := "3132333435363738393031323334353637383930"
-	count := int64(0)
-	hmacStr, err := calculateHMACSHA1(secret, count)
-	if err != nil {
-		t.FailNow()
-	}
-	if hmacStr != "cc93cf18508d94934c64b65d8ba7667fb7cde4b0" {
-		t.Logf("A: %s", hmacStr)
-		t.Logf("E: cc93cf18508d94934c64b65d8ba7667fb7cde4b0")
-		t.FailNow()
-	}
-}
 
 func TestHMACSHA1Calculation(t *testing.T) {
 	secret := "3132333435363738393031323334353637383930"
 	testCases := []struct {
 		desc         string
-		count        int64
+		count        uint64
 		expectedHMAC string
 	}{
-		{"when count is 0", int64(0), "cc93cf18508d94934c64b65d8ba7667fb7cde4b0"},
+		{"when count is 0", 0, "cc93cf18508d94934c64b65d8ba7667fb7cde4b0"},
 		{"when count is 1", 1, "75a48a19d4cbe100644e8ac1397eea747a2d33ab"},
 		{"when count is 2", 2, "0bacb7fa082fef30782211938bc1c5e70416ff44"},
 		{"when count is 3", 3, "66c28227d03a2d5529262ff016a1e6ef76557ece"},
