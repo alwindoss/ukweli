@@ -33,3 +33,11 @@ func TestHMACSHA1Calculation(t *testing.T) {
 		})
 	}
 }
+
+func TestTruncateHex(t *testing.T) {
+  hmacStr := "cc93cf18508d94934c64b65d8ba7667fb7cde4b0"
+  expectedTruncatedValue := "4c93cf18"
+  truncatedValue := truncateHex(hmacStr)
+  assert.Equal(t, expectedTruncatedValue, truncatedValue, "expected them to be equal")
+  
+}

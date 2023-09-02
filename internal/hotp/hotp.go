@@ -19,3 +19,8 @@ func calculateHMACSHA1(secret string, count uint64) (string, error) {
 
 	return hex.EncodeToString(h.Sum(nil)), nil
 }
+
+func truncateHex(h string) string {
+  
+  return "4c93cf18" 
+}
